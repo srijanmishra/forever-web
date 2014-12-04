@@ -10,6 +10,12 @@ An elegant web interface for Nodejitsi/forever.
 - [Features](#feats)
 - [Cautions](#cauts)
 - [UI/UX](#ui)
+  - [Backend](#back)
+  - [Home](#home)
+  - [Empty List](#no_proc)
+  - [Processes](#procs)
+  - [Describe Complete Information](#info)
+  - [Tail Logs](#tail_logs)
 - [TODO](#todo)
 
 
@@ -90,35 +96,41 @@ forever: 	~/.forever
 - Amazing and smooth animations.
 - High performance.
 
+<a name="back" />
 Backend (without `--no-debug` option):
 
 ![shot](screenshots/backend.jpg)
 
+<a name="home" />
 Home
 
 ![shot](screenshots/home.jpg)
 
+<a name="no_proc" />
 Empty List
 
 ![shot](screenshots/no-proc.jpg)
 
+<a name="procs" />
 Processes
 
 ![shot](screenshots/procs.jpg)
 
+<a name="info" />
 Describe Complete Information
 
 ![shot](screenshots/info.jpg)
 
+<a name="tail_logs" />
 Tail Logs
 
 ![shot](screenshots/tail-logs.jpg)
 
 <a name="todo" />
 # TODO
-- Implement restart/stop
-- Test on Windows (need environment).
-- Need feedback.
+- [ ] Implement restart/stop
+- [ ] Test on Windows (need environment).
+- [ ] Need feedback/test.
 
 
 ## License
