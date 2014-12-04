@@ -160,7 +160,8 @@ Tail Logs
 
 <a name="todo" />
 # TODO
-- [ ] Implement restart/stop
+- [ ] Implement restart/stop.
+- [ ] Do not count uptime of STOPPED processes.
 - [ ] Memory usage of each process.
 - [ ] Test on Windows (need environment).
 - [ ] Need feedback/test.
