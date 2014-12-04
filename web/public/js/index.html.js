@@ -605,7 +605,6 @@ var procEvents = {
           method = ele.data('original-title').toLowerCase(),
           uid = ele.closest('.proc').attr('id').substr(5);
 
-      // TODO:
       procEvents[method].bind({uid: uid})();
     });
     o.find('[data-toggle="tooltip"]').tooltip();
