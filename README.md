@@ -161,6 +161,7 @@ Tail Logs
 <a name="todo" />
 # TODO
 - [ ] Implement restart/stop
+- [ ] Memory usage of each process.
 - [ ] Test on Windows (need environment).
 - [ ] Need feedback/test.
 
