@@ -2,11 +2,24 @@ forever-web [![NPM version](https://badge.fury.io/js/forever-web.svg)](http://ba
 ===========
 An elegant web interface for Nodejitsi/forever.
 
+# Guide
+- [Installation](#ins)
+- [CLI](#cli)
+  - [Run Web Interface](#cli_web)
+  - [Configurations](#cli_confs)
+- [Features](#feats)
+- [Cautions](#cauts)
+- [UI/UX](#ui)
+- [TODO](#todo)
+
+
+<a name="ins" />
 # Installation
 ```
 $ npm install -g forever-web
 ```
 
+<a name="cli" />
 # CLI
 ```bash
   Usage: fw [cmd] [file|name]
@@ -33,6 +46,7 @@ $ npm install -g forever-web
 
 ```
 
+<a name="cli_web" />
 ## Run Web Interface
 ```bash
   Usage: start [options] [port]
@@ -43,6 +57,7 @@ $ npm install -g forever-web
     --no-debug  hide stdout/stderr information
 ```
 
+<a name="cli_confs" />
 ## Configurations
 ```
 refresh: 	3000
@@ -54,20 +69,23 @@ forever: 	~/.forever
 - **manupulation** A value indicates whether the client has permission to restart/stop processes, `true` by default.
 - **forever** Root directory of nodejitsu/forever, `~/.forever` by default.
 
+<a name="feats" />
 # Feature
 - All the heartbeats - including **monitor** and **tail (logs)** are automatic destroyed.
-- The `forever` processes are watched by a FSWatcher, but not manually polling.
-- Communicated with `forever` through NSSocket directly, but not `forever` programmatic API.
+- The `forever` processes are watched by a FSWatcher ([chokidar](https://www.npmjs.org/package/chokidar)), but not manually polling.
+- Communicated with `forever` through [NSSocket](https://www.npmjs.org/package/nssocket) directly, but not `forever` programmatic API.
 - Socket.io between client and server.
 - Monitor CPU and Memory usage of server in a real-time.
 - Monitor `forever` processes in a real-time.
 
+<a name="cauts" />
 # Cautions
-- Web Interface is wrote by CSS3 && HTML5, so view it with the latest version browsers, like chrome and safari.
-- I've never test it on an Internet Explorer.
+- Web Interface is wrote by CSS3 && HTML5, so view it with the latest version of the browser (WebGL, Animation, WebSocket supports), e.g. Chrome, Safari and Firefox.
+- I've never test it on Internet Explorer.
 - I've never test it on Windows.
 - Nodejitsu/forever has problem with `STOPPED` process, so if there is a `STOPPED` process, however, it can create instability, you'd better refresh the page manually (F5 / COMMAND + R).
 
+<a name="ui" />
 # UI/UX
 - Amazing and smooth animations.
 - High performance.
@@ -96,6 +114,7 @@ Tail Logs
 
 ![shot](screenshots/tail-logs.jpg)
 
+<a name="todo" />
 # TODO
 - Implement restart/stop
 - Test on Windows (need environment).
