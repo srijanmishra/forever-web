@@ -67,7 +67,7 @@ $ npm install -g forever-web
 
 <a name="cli_confs" />
 ## Configs
-```JSON
+```javascript
 {
   "refresh": 3000
   "manipulation": true
