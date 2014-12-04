@@ -86,6 +86,7 @@ Usage
 $ fw set <key> <value>
 ```
 
+Example
 ```bash
 $ fw set refresh 2000
 ```
@@ -99,6 +100,7 @@ Usage
 $ fw rm <key>
 ```
 
+Example
 ```bash
 $ fw rm refresh
 ```
@@ -108,7 +110,7 @@ Above command will remove `refresh` config and it will be set to `5000` by defau
 
 <a name="feats" />
 # Feature
-- All the heartbeats - including **monitor** and **tail (logs)** are automatic destroyed.
+- All the heartbeats (no matter **monitor** or **tail (logs)**) are automatic destroyed.
 - The `forever` processes are watched by a FSWatcher ([chokidar](https://www.npmjs.org/package/chokidar)), but not manually polling.
 - Communicated with `forever` through [NSSocket](https://www.npmjs.org/package/nssocket) directly, but not `forever` programmatic API.
 - Socket.io between client and server.
@@ -118,8 +120,7 @@ Above command will remove `refresh` config and it will be set to `5000` by defau
 <a name="cauts" />
 # Cautions
 - Web Interface is wrote by CSS3 && HTML5, so view it with the latest version of the browser (WebGL, Animation, WebSocket supports), e.g. Chrome, Safari and Firefox.
-- I've never test it on Internet Explorer.
-- I've never test it on Windows.
+- I've never test it on Internet Explorer / Windows.
 - Nodejitsu/forever has problem with `STOPPED` process, so if there is a `STOPPED` process, however, it can create instability, you'd better refresh the page manually (F5 / COMMAND + R).
 
 <a name="ui" />
