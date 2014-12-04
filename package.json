@@ -1,0 +1,50 @@
+{
+  "name": "forever-web",
+  "version": "0.0.1",
+  "description": "An elegant web interface for Nodejitsi/forever.",
+  "scripts": {
+  },
+  "bin": {
+    "fw": "bin/fw"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Tjatse/forever-web.git"
+  },
+  "keywords": [
+    "monitor",
+    "dashboard",
+    "forever",
+    "forever web",
+    "forever ui"
+  ],
+  "author": {
+    "name": "Tjatse"
+  },
+  "license": "Apache, Version 2.0",
+  "bugs": {
+    "url": "https://github.com/Tjatse/forever-web/issues"
+  },
+  "engines": [
+    "node >= 0.8.0"
+  ],
+  "dependencies": {
+    "async":"~0.9.0",
+    "lodash":"~2.4.1",
+    "commander": "~2.5.0",
+    "chalk": "~0.5.1",
+    "express": "~4.10.1",
+    "swig": "~1.4.2",
+    "usage": "~0.5.0",
+    "ansi_up": "~1.1.2",
+    "windows-cpu": "~0.1.1",
+    "socket.io": "~1.2.0",
+    "nconf": "~0.6.9",
+    "nssocket":"~0.5.2",
+    "chokidar":"~0.11.1"
+  },
+  "devDependencies": {
+  },
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/Tjatse/forever-web"
+}
