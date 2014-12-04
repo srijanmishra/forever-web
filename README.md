@@ -6,7 +6,9 @@ An elegant web interface for Nodejitsi/forever.
 - [Installation](#ins)
 - [CLI](#cli)
   - [Run Web Interface](#cli_web)
-  - [Configurations](#cli_confs)
+  - [Configs](#cli_confs)
+    - [Set](#cli_conf_set)
+    - [Remove](#cli_conf_remove)
 - [Features](#feats)
 - [Cautions](#cauts)
 - [UI/UX](#ui)
@@ -64,16 +66,45 @@ $ npm install -g forever-web
 ```
 
 <a name="cli_confs" />
-## Configurations
-```
-refresh: 	3000
-manipulation: 	true
-forever: 	~/.forever
+## Configs
+```JSON
+{
+  "refresh": 3000
+  "manipulation": true
+  "forever": "~/.forever"
+}
 ```
 
 - **refresh** The heartbeat duration of monitor (backend), `5000` by default.
 - **manupulation** A value indicates whether the client has permission to restart/stop processes, `true` by default.
 - **forever** Root directory of nodejitsu/forever, `~/.forever` by default.
+
+<a name="cli_conf_set">
+### Set Config
+Usage
+```bash
+$ fw set <key> <value>
+```
+
+```bash
+$ fw set refresh 2000
+```
+
+Above command will set `refresh` to two second.
+
+<a name="cli_conf_remove">
+### Remove Config
+Usage
+```bash
+$ fw rm <key>
+```
+
+```bash
+$ fw rm refresh
+```
+
+Above command will remove `refresh` config and it will be set to `5000` by default.
+
 
 <a name="feats" />
 # Feature
