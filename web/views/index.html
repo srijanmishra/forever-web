@@ -1,0 +1,122 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8"/>
+  <title>{{ title }} - Nodejitsu/forever</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"/>
+  <meta name="viewport" content="target-densitydpi=device-dpi"/>
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/css/jquery.fullPage.css"/>
+  <link rel="stylesheet" href="/css/jquery.sticky.min.css"/>
+  <link rel="stylesheet" href="/css/animation.min.css"/>
+  <link rel="stylesheet" href="/css/jquery.avgrund.min.css"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  <link rel="shortcut icon" href="/img/favicon.ico"/>
+</head>
+<body>
+
+<div id="fullpage">
+  <div class="section ">
+    <div class="repo bounceInDown"><a href="https://github.com/Tjatse/forever-web" target="_blank">Github Repo</a></div>
+    <div class="polar_usage"></div>
+    <div class="system_info"></div>
+    <div class="procs-hint-container hide">
+      <div>
+        Apps(<span>0</span>)
+      </div>
+    </div>
+  </div>
+  <div class="section moveDown">
+    <div class="procs"></div>
+  </div>
+</div>
+
+<div class="spinner">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="/js/jquery.sticky.min.js"></script>
+<script type="text/javascript" src="/js/jquery.fullPage.min.js"></script>
+<script type="text/javascript" src="/js/jquery.avgrund.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/socket.io.js"></script>
+<script type="text/javascript" src="/js/d3.min.js"></script>
+<script type="text/javascript" src="/js/lodash.min.js"></script>
+<script type="text/javascript" src="/js/index.html.js"></script>
+
+<script type="text/html" id="sysInfoTmp">
+  <dl>
+    <dt>CPUs</dt>
+    <dd><%- data.cpu %></dd>
+    <dt>arch</dt>
+    <dd><%- data.arch %></dd>
+    <dt>uptime</dt>
+    <dd><%- data.uptime %></dd>
+    <dt>memory</dt>
+    <dd><%- data.memory %></dd>
+  </dl>
+</script>
+
+<script type="text/html" id="noProcTmp">
+  <div class="proc proc-empty">
+    <div class="proc-col proc-status">
+      <i class="glyphicon glyphicon-info-sign"></i>
+    </div>
+    <div class="proc-col proc-info">
+      <h4>Ops...</h4>
+      <small>No forever processes running</small>
+    </div>
+  </div>
+</script>
+
+<script type="text/html" id="procTmp">
+  <div id="proc_<%- proc.uid %>" class="proc<%- proc.running ? '':' proc-stop' %>">
+    <div class="proc-col proc-status">
+      <i class="glyphicon glyphicon-<%- proc.running ? 'ok':'remove' %>-sign"></i>
+    </div>
+    <div class="proc-col proc-info">
+      <h4><span>[<%- proc.uid %>]</span> <%- proc.name %></h4>
+      <small><%- proc.file %> -<span data-ctime="<%- proc.ctime %>"></span></small>
+    </div>
+    <div class="proc-col proc-ops">
+      <ul>
+        <li><i class="glyphicon glyphicon-refresh" data-toggle="tooltip" data-placement="top" title="Restart"></i></li>
+        <li><i class="glyphicon glyphicon-ban-circle" data-toggle="tooltip" data-placement="top" title="Stop"></i></li>
+      </ul>
+    </div>
+  </div>
+  <% if(!noDiv){ %>
+    <div class="proc-div"></div>
+  <% } %>
+</script>
+
+<script type="text/html" id="popupTmp">
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a>
+      </li>
+      <li role="presentation">
+        <a href="#log" aria-controls="log" role="tab" data-toggle="tab">Log</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="info">
+        <pre><%= info %></pre>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="log">
+        <div class="load">Tailing...</div>
+      </div>
+    </div>
+  </div>
+</script>
+</body>
+</html>
