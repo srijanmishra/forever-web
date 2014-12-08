@@ -6,6 +6,10 @@ html, body {
 }
 
 .spinner {
+  z-index: 9999;
+  text-align: center;
+}
+.spinner-main {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -13,8 +17,6 @@ html, body {
   margin-top: -20px;
   width: 100px;
   height: 40px;
-  z-index: 9999;
-  text-align: center;
 }
 
 @-webkit-keyframes stretchdelay {

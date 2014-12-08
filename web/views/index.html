@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div class="spinner">
+<div class="spinner spinner-main">
   <div></div>
   <div></div>
   <div></div>
@@ -84,7 +84,10 @@
     </div>
     <div class="proc-col proc-info">
       <h4><span>[<%- proc.uid %>]</span> <%- proc.name %></h4>
-      <small><%- proc.file %> -<span data-ctime="<%- proc.ctime %>"></span></small>
+      <small>
+        <%- (proc.file.length > 30 ? '...':'') + proc.file.slice(-30) %>
+        <small>(<%- getMem(proc.memory) %>)</small>
+        <span data-ctime="<%- proc.ctime %>" data-running="<%- proc.running ? 'YES':'NO' %>">0s</span></small>
     </div>
     <div class="proc-col proc-ops">
       <ul>

@@ -407,7 +407,12 @@ function updateProcsLayout(noAnimation){
               return p.uid == uid;
             });
 
-        if (proc1 && proc2 && (proc1.running != proc2.running || proc1.file != proc2.file || proc1.ctime != proc2.ctime)) {
+        if (proc1 && proc2 &&
+          (proc1.running != proc2.running ||
+          proc1.file != proc2.file ||
+          proc1.ctime != proc2.ctime ||
+          (!proc1.memory && proc2.memory) ||
+          (proc1.memory && !proc2.memory))) {
           ups.push(proc2);
         }
       });
@@ -554,7 +559,7 @@ function startTimer(){
  * Update the uptimes of processes.
  */
 function updateUptime(){
-  var spans = eles.procs.find('span[data-ctime]');
+  var spans = eles.procs.find('span[data-ctime][data-running=YES]');
   if (spans.length == 0) {
     return;
   }
@@ -667,8 +672,21 @@ function showPopupTab(proc, delayed){
     return setTimeout(showPopupTab, 800, proc, true);
   }
 
+  // Resort keys.
+  var clonedProc = {};
+  Object.keys(proc).sort(function(a, b){
+    return a.charCodeAt(0) - b.charCodeAt(0);
+  }).forEach(function(key){
+    // Omit memory, just keep the original data.
+    if(key == 'memory'){
+      return;
+    }
+    clonedProc[key] = proc[key];
+  })
+
+
   // Reset content HTML.
-  var popup = $('#popup').html(tmps.popup({info: highlight(proc)}));
+  var popup = $('#popup').html(tmps.popup({info: highlight(clonedProc)}));
   // Find tabcontent.
   var tabContent = popup.find('.tab-content').eq(0);
   // Bind slimScroll.
@@ -826,16 +844,20 @@ function info(msg){
  * @returns {string}
  */
 function getMem(mem){
+  if(typeof mem == 'string'){
+    return mem;
+  }
+
   if (mem < 1024) {
-    return mem + 'Bytes';
+    return mem + 'B';
   }
   if (mem < 1048576) {
-    return Math.round(mem / 1024) + ' KB';
+    return Math.round(mem / 1024) + 'K';
   }
   if (mem < 1073741824) {
-    return Math.round(mem / 1048576) + ' MB';
+    return Math.round(mem / 1048576) + 'M';
   }
-  return Math.round(mem / 1073741824) + ' GB';
+  return Math.round(mem / 1073741824) + 'G';
 }
 
 /**
