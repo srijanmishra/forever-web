@@ -135,6 +135,16 @@ function listenSocket(){
     // Remove loading.
     $('.spinner').remove();
   }
+
+  // Show alert when stopping process by uid failed.
+  socket.on('action', function(id, errMsg){
+    info(errMsg);
+    $('#proc_' + id).find('.proc-ops').find('.load').fadeOut(function(){
+      $(this).prev().fadeIn().end().fadeOut(function(){
+        $(this).remove();
+      });
+    });
+  });
 }
 
 /**
@@ -595,32 +605,23 @@ function destroySlimScroll(){
 }
 
 /**
- * Events of process.
- * @type {{_init: Function, restart: Function, stop: Function}}
+ * Bind process events.
+ * @param {jQuery} o
  */
-var procEvents = {
-  /**
-   * Initialization.
-   * @param {jQuery} o
-   * @private
-   */
-  _init  : function(o){
-    o.find('.proc-ops').on('click', 'i', function(){
-      var ele = $(this),
-          method = ele.data('original-title').toLowerCase(),
-          uid = ele.closest('.proc').attr('id').substr(5);
+function procEvents(o){
+  o.find('.proc-ops').on('click', 'i', function(){
+    var ele = $(this),
+        method = ele.data('original-title').toLowerCase(),
+        uid = ele.closest('.proc').attr('id').substr(5);
 
-      procEvents[method].bind({uid: uid})();
-    });
-    o.find('[data-toggle="tooltip"]').tooltip();
-  },
-  restart: function(){
-    console.log('restart', this.uid);
-  },
-  stop   : function(){
-    console.log('stop', this.uid);
-  }
-};
+    var ops = ele.closest('.proc-ops');
+    $('<div class="load"></div>').css({opacity: 0.01}).appendTo(ops);
+
+    ops.find('ul').fadeOut().next().animate({opacity: 1});
+
+    socket.emit('action', method, uid);
+  }).end().find('[data-toggle="tooltip"]').tooltip();
+}
 
 /**
  * Attach events to process layout.
@@ -628,7 +629,7 @@ var procEvents = {
  */
 function attachProcEvents(o){
   bindPopup(o);
-  procEvents._init(o);
+  procEvents(o);
 }
 
 /**
@@ -654,7 +655,7 @@ function bindPopup(o){
       destroyTailBeat(popupProc && popupProc.uid);
       popupProc = null;
     },
-    template       : '<div id="popup"><div class="load">Loading...</div></div>'
+    template       : '<div id="popup"><div class="load"></div></div>'
   });
 }
 
@@ -682,8 +683,7 @@ function showPopupTab(proc, delayed){
       return;
     }
     clonedProc[key] = proc[key];
-  })
-
+  });
 
   // Reset content HTML.
   var popup = $('#popup').html(tmps.popup({info: highlight(clonedProc)}));
@@ -746,6 +746,7 @@ function appendLogs(log){
   if (!popupProc || popupProc.uid != log.uid) {
     return;
   }
+
   // Remove `loading` status.
   $('#log>.load').remove();
 

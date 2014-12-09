@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div class="spinner spinner-main">
+<div class="spinner">
   <div></div>
   <div></div>
   <div></div>
@@ -85,9 +85,7 @@
     <div class="proc-col proc-info">
       <h4><span>[<%- proc.uid %>]</span> <%- proc.name %></h4>
       <small>
-        <%- (proc.file.length > 30 ? '...':'') + proc.file.slice(-30) %>
-        <small>(<%- getMem(proc.memory) %>)</small>
-        <span data-ctime="<%- proc.ctime %>" data-running="<%- proc.running ? 'YES':'NO' %>">0s</span></small>
+        <%- (proc.file.length > 30 ? '...':'') + proc.file.slice(-30) %> <small>&lt;<%- getMem(proc.memory) %>&gt;</small> - <span data-ctime="<%- proc.ctime %>" data-running="<%- proc.running ? 'YES':'NO' %>">0s</span></small>
     </div>
     <div class="proc-col proc-ops">
       <ul>
@@ -116,7 +114,7 @@
         <pre><%= info %></pre>
       </div>
       <div role="tabpanel" class="tab-pane" id="log">
-        <div class="load">Tailing...</div>
+        <div class="load"></div>
       </div>
     </div>
   </div>
