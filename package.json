@@ -1,6 +1,6 @@
 {
   "name": "forever-web",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An elegant web interface for Nodejitsi/forever.",
   "scripts": {
   },
@@ -41,7 +41,7 @@
     "socket.io": "~1.2.0",
     "nconf": "~0.6.9",
     "nssocket":"~0.5.2",
-    "chokidar":"~0.11.1"
+    "chokidar":"~0.12.0"
   },
   "devDependencies": {
   },
