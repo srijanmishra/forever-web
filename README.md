@@ -29,7 +29,7 @@ $ npm install -g forever-web
 
 <a name="cli" />
 # CLI
-```bash
+```
   Usage: fw [cmd] [file|name]
 
   Commands:
@@ -116,12 +116,13 @@ Above command will remove `refresh` config and it will be set to `5000` by defau
 - Socket.io between client and server.
 - Monitor CPU and Memory usage of server in a real-time.
 - Monitor `forever` processes in a real-time.
+- Supports: process memory monitor, forever restart/stop.
 
 <a name="cauts" />
 # Cautions
 - Web Interface is wrote by CSS3 && HTML5, so view it with the latest version of the browser (WebGL, Animation, WebSocket supports), e.g. Chrome, Safari and Firefox.
 - I've never test it on Internet Explorer / Windows.
-- Nodejitsu/forever has problem with `STOPPED` process, so if there is a `STOPPED` process, however, it can create instability, you'd better refresh the page manually (F5 / COMMAND + R).
+- Nodejitsu/forever has problem with `STOPPED` process, so if there is a `STOPPED` process, however, it can create instability, you'd better refresh the page manually (F5 / COMMAND + R), sometimes you need to restart `forever-web`.
 
 <a name="ui" />
 # UI/UX
@@ -160,7 +161,7 @@ Tail Logs
 
 <a name="todo" />
 # TODO
-- [ ] Implement restart/stop.
+- [x] Implement restart/stop.
 - [x] Do not count uptime of STOPPED processes.
 - [x] Memory usage of each process.
 - [ ] Test on Windows (need environment).
