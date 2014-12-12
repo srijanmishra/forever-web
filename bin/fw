@@ -9,7 +9,7 @@ var commander = require('commander'),
     interface = require('../web/index');
 
 commander.version(pkg.version, '-v, --version')
-  .usage('[cmd] [file|name]');
+  .usage('[cmd] [options]');
 
 commander.on('--help', function(){
   console.log('  Basic Examples:\n\n' +
