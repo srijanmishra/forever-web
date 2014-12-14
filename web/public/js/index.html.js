@@ -716,7 +716,7 @@ function showPopupTab(proc, delayed){
       return tailLogs();
     }
     // Reset log tab to `loading` status
-    $('#log').html('<div class="load">Tailing...</div>');
+    $('#log').html('<div class="load"></div>');
     // Destroy tail heartbeat immediately.
     destroyTailBeat(popupProc && popupProc.uid);
     popupProc = null;
