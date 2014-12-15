@@ -753,10 +753,15 @@ function appendLogs(log){
   var lo = $('#log');
   $(log.msg).appendTo(lo);
 
-  // Scroll down.
-  lo.parent().slimScroll({
-    scrollTo: lo.height() - 300
-  });
+  var offset = lo.get(0).scrollHeight - 300,
+      poffset = lo.parent().scrollTop() || 0;
+
+  // Scroll down if necessary.
+  if(poffset >= offset - 30) {
+    lo.parent().slimScroll({
+      scrollTo: offset
+    });
+  }
 }
 
 /**
