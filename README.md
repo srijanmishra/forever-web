@@ -117,6 +117,7 @@ Above command will remove `refresh` config and it will be set to `5000` by defau
 - Monitor CPU and Memory usage of server in a real-time.
 - Monitor `forever` processes in a real-time.
 - Supports: process memory monitor, forever restart/stop.
+- Supports [ANSI color codes](#tail_logs).
 
 <a name="cauts" />
 # Cautions
