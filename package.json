@@ -1,6 +1,6 @@
 {
   "name": "forever-web",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "An elegant web interface for Nodejitsi/forever.",
   "scripts": {
   },
