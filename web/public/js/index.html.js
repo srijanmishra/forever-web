@@ -797,7 +797,7 @@ function getProcByEle(ele){
   var id = ele.text();
   id = id.substr(1, id.length - 2);
   return _.find(procs.data, function(p){
-    return p.uid = id;
+    return p.uid == id;
   });
 }
 
