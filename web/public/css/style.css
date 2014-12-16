@@ -291,10 +291,13 @@ html, body {
   list-style: none;
   margin: 0;
   padding: 0;
+  list-style-position: outside;
 }
 
-.procs .proc .proc-ops ul {
-  list-style-position: outside;
+.procs .proc .proc-ops ul,
+.procs .proc .proc-ops .load {
+  position: absolute;
+  top: 0;
 }
 
 .procs .proc .proc-ops ul li {
