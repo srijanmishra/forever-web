@@ -30,7 +30,7 @@ $ npm install -g forever-web
 <a name="cli" />
 # CLI
 ```
-  Usage: fw [cmd] [file|name]
+  Usage: fw [cmd] [options]
 
   Commands:
 
