@@ -34,7 +34,7 @@ commander.command('start [port]')
   });
 
 // Configuration
-var acceptKeys = ['forever', 'refresh', 'manipulation'];
+var acceptKeys = ['forever', 'refresh', 'manipulation', 'username', 'password'];
 function showConfigs(cmd, mon){
   if(!mon){
     mon =  Monitor();
